@@ -7,6 +7,7 @@ public class Task {
     private String title;
     private boolean isDone;
     private String createdAt;
+    private Priority priority;
 
     public Task() {
     }
@@ -15,8 +16,9 @@ public class Task {
         return isDone ? "[X]" : "[ ]";
     }
 
-    public Task(String title) {
+    public Task(String title, Priority priority) {
         this.title = title;
+        this.priority = priority;
         this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
@@ -34,6 +36,14 @@ public class Task {
 
     public boolean isDone() {
         return isDone;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
     public String getCreatedAt() {

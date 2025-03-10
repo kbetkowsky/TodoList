@@ -17,7 +17,19 @@ public class Main {
                 case 1 -> {
                     System.out.println("Podaj tytul zadania: ");
                     String title = scanner.nextLine();
-                    taskManager.addTask(title);
+                    System.out.println("Wybierz priorytet zadania: " +
+                            "1 - NISKI, 2 - SREDNI, 3 - WYSOKI");
+                    int priorityChoice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Priority priority = switch (priorityChoice) {
+                        case 1 -> Priority.NISKI;
+                        case 2 -> Priority.SREDNI;
+                        case 3 -> Priority.WYSOKI;
+                        default -> Priority.SREDNI;
+                    };
+
+                    taskManager.addTask(title, priority);
                 }
                 case 2 -> {
                     taskManager.showTasks();

@@ -17,10 +17,11 @@ public class TaskManager {
         loadTasks();
     }
 
-    public void addTask(String title) {
-        tasks.add(new Task(title));
+    public void addTask(String title, Priority priority) {
+        tasks.add(new Task(title, priority));
         saveTasks();
-        System.out.println("Dodano zadanie: " + title);
+        System.out.println("Dodano zadanie: " + title + " ["
+                + priority + "]");
     }
 
     public void completeTask(int index) {
@@ -37,7 +38,8 @@ public class TaskManager {
         System.out.println("\nLista zadan: ");
         int counter = 1;
         for (Task task : tasks) {
-            System.out.println(counter + ": " + task.getTitle() + " " + task.isComplete()
+            System.out.println(counter + ": " + task.getTitle() + " [" + task.getPriority() +
+                    "] " + " " + task.isComplete()
             + " " + tasks.get(counter - 1).getCreatedAt());
             counter++;
         }
