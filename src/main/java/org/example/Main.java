@@ -9,7 +9,7 @@ public class Main {
         while (true) {
             System.out.println("1. Dodaj zadanie, " +
                     "2. Pokaż zadania, 3. Oznacz jako ukończone," +
-                    " 4. Wyjdź");
+                    " 4. Wyjdź, 5. Usun zadanie, 6. Sortuj wg priorytetu");
             int number = scanner.nextInt();
             scanner.nextLine();
 
@@ -46,6 +46,9 @@ public class Main {
                     System.out.println("Podaj numer zadania do usunięcia: ");
                     int index = scanner.nextInt();
                     taskManager.removeTask(index - 1);
+                }
+                case 6 -> {
+                    taskManager.showTasksSortedByPrioity();
                 }
                 default -> System.out.println("Nieprawidlowy wybor");
             }

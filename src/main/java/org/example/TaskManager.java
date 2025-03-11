@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class TaskManager {
@@ -74,5 +75,11 @@ public class TaskManager {
             tasks.remove(index);
             saveTasks();
         } else System.out.println("Nieprawidlowy numer zadania");
+    }
+
+    public void showTasksSortedByPrioity() {
+        tasks.stream().sorted(Comparator.comparing(Task::getPriority).reversed())
+                .forEach(task -> System.out.println(task.isComplete() + " " + task.getTitle() + " ["
+                + task.getPriority() + "]"));
     }
 }
